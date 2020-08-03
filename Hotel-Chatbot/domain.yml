@@ -1,0 +1,72 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - inform
+  - book_room
+  - clean_room
+  - faq
+
+entities:
+  - num_rooms
+  - room_type
+  - clean_now
+  - clean_later
+  - clean_later_descriptive
+
+slots:
+  num_rooms:
+    type: unfeaturized
+  room_type:
+    type: text
+  clean_later:
+    type: unfeaturized
+  clean_later_descriptive:
+    type: unfeaturized
+
+actions:
+  - respond_faq
+
+responses:
+  utter_greet:
+  - text: "Hi! How may I help you?"
+
+  utter_how_many:
+  - text: "How many rooms would you like to book?"
+
+  utter_which_room:
+  - text: "What type of room would you like to book?"
+    buttons:
+    - payload: "Simple"
+    - payload: "Deluxe"
+  
+  utter_room_confirm:
+  - text: "You have chosen to book {num_rooms} {room_type} rooms."
+
+  utter_what_time:
+  - text: "When should I arrange for a cleaning?"
+    buttons:
+    - payload: "right now"
+    - payload: "3 PM"
+    - payload: "5 PM"
+    - payload: "7 PM"
+
+  utter_is_time_fine:
+  - text: "Is 6 PM fine for your room cleaning?"
+
+  utter_clean_confirm_now:
+  - text: "Sure, I will send someone to your room right away."
+  
+  utter_clean_confirm_later:
+  - text: "Sure, I have scheduled a cleaning for {clean_later} today."
+
+  utter_clean_confirm_later_2:
+  - text: "Sure, I have scheduled a cleaning for 6 PM today."
+
+  utter_goodbye:
+  - text: "Have a nice day!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
